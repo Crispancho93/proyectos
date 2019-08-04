@@ -3,6 +3,8 @@ package conexion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import entity.Empleado;
+import comercial.bo.EmpleadoBo;
 
 /**
  *
@@ -41,8 +43,17 @@ public class Conexion {
     }
     
     public static void main(String[] args) {
+          
+        Empleado miEmpleado = new Empleado();
+        miEmpleado.setNombre("Julio");
+        miEmpleado.setApellido("Gomez");
+        miEmpleado.setCedula("34354");
+        miEmpleado.setEstadoCivil("1");
+        miEmpleado.setGenero("1");
+        miEmpleado.setEdad(20);
         
-        Conexion con = new Conexion();
-        con.getConnection();
+        EmpleadoBo miEmpleadoBo = new EmpleadoBo();
+        String mensaje = miEmpleadoBo.agregarEmpleado(miEmpleado);
+        System.out.println(mensaje);
     }
 }
