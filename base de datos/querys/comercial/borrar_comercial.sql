@@ -1,1 +1,6 @@
+/*BORRAR TABLA*/
 DROP TABLE EMPLEADO;
+
+/*BORRAR REGISTRO*/
+DELETE FROM empleado
+WHERE id_empleado = 21;
