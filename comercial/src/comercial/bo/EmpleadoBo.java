@@ -3,7 +3,7 @@ package comercial.bo;
 import entity.Empleado;
 import comercial.dao.EmpleadoDao;
 import java.sql.Connection;
-import conexion.Conexion;
+import conexion.ConexionMssql;
 /**
  *
  * @author Crispancho
@@ -16,7 +16,7 @@ public class EmpleadoBo {
     
     public String agregarEmpleado(Empleado empleado){
         
-        Connection conn = Conexion.getConnection();
+        Connection conn = ConexionMssql.getConnection();
         
         try {
            mensaje =  miEmpleadoDao.agregarEmpleado(conn, empleado);

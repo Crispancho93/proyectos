@@ -1,16 +1,19 @@
 CREATE DATABASE aprendiendo;
 
-CREATE TABLE Persons (
-    PersonID int,
-    LastName varchar(255),
-    FirstName varchar(255),
-    Address varchar(255),
-    City varchar(255) 
+
+
+SELECT * FROM EMPLEADO;
+
+USE APRENDIENDO;
+CREATE TABLE EMPLEADO (
+    ID_EMPLEADO INT  PRIMARY KEY,
+    NOMBRE VARCHAR(50) NOT NULL,
+	APELLIDO VARCHAR(50) NOT NULL,
+	CEDULA VARCHAR(50) NOT NULL,
+	ESTADO_CIVIL VARCHAR(1) NOT NULL,
+	GENERO VARCHAR(1) NOT NULL,
+	EDAD INT NOT NULL
 );
 
-CREATE TABLE numeroPar (
-    resultado varchar(50)
-);
-
-SELECT * FROM numeroPar;
-
+INSERT INTO empleado (nombre, apellido, cedula, estado_civil, genero, edad)
+VALUES ('julio', 'lopez', '34435','1','1',23);

@@ -11,7 +11,7 @@ import java.sql.SQLException;
  *
  * @author Crispancho
  */
-public class Conexion {
+public class ConexionMssql {
     
     private static Connection conn = null;
     
@@ -20,7 +20,7 @@ public class Conexion {
         try {
             
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=test", "sa", "Colombia.123");
+            conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=aprendiendo", "sa", "Colombia.123");
             System.out.println("Conexion correcta");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("No se puede conectar "+e.getMessage());
@@ -29,8 +29,6 @@ public class Conexion {
         return conn;
     }
     
-    public static void main(String[] args) {
-        
-        conexion.Conexion.getConnection();
-    }
+    
+    
 }
