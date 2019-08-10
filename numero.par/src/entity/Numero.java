@@ -9,6 +9,7 @@ public class Numero {
     
     private int idNumero;
     private int numero;
+    private String descripcion;
     
     public Numero(){
         
@@ -32,6 +33,14 @@ public class Numero {
     
     public void setIdNumero(int id){
         this.idNumero = id;
+    }
+    
+    public String getDescripcion(){
+        return descripcion;
+    }
+    
+    public void setDescripcion(String descripcion){
+        this.descripcion = descripcion;
     }
 
     @Override

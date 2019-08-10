@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package view;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import numero.par.bo.NumeroBo;
 
 /**
@@ -12,7 +14,9 @@ import numero.par.bo.NumeroBo;
  * @author Crispancho
  */
 public class frmNumeroPar extends javax.swing.JFrame {
-
+    
+    private int numeroAValidar;
+    
     /**
      * Creates new form frmNumeroPar
      */
@@ -60,6 +64,11 @@ public class frmNumeroPar extends javax.swing.JFrame {
         txtNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroActionPerformed(evt);
+            }
+        });
+        txtNumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNumeroKeyPressed(evt);
             }
         });
 
@@ -111,8 +120,29 @@ public class frmNumeroPar extends javax.swing.JFrame {
     private void btnComprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprobarActionPerformed
         
         
-        NumeroBo miNumeroBo = new NumeroBo();
-        int numeroAValidar = Integer.parseInt(txtNumero.getText()) ;
+        if (txtNumero.getText().equals("")) 
+        {
+            JOptionPane.showMessageDialog(null, "Campo vacío, por favor ingrese un valor numerico");
+            txtNumero.setText("");
+            txtNumero.requestFocus();
+            return;
+        } 
+        else
+        {
+            try 
+            {
+                numeroAValidar = Integer.parseInt(txtNumero.getText());
+            } 
+            catch (NumberFormatException e) 
+            {
+                JOptionPane.showMessageDialog(null, "Ingrese un valor numerico por favor");
+                txtNumero.setText("");
+                txtNumero.requestFocus();
+                return;
+            }
+        }
+        
+        NumeroBo miNumeroBo = new NumeroBo();       
         
         if (miNumeroBo.numeroPar(numeroAValidar)) {
             jLResuldato.setText("Resultado: El numero "+txtNumero.getText()+" es par");
@@ -120,6 +150,15 @@ public class frmNumeroPar extends javax.swing.JFrame {
             jLResuldato.setText("Resultado: El numero "+txtNumero.getText()+" es impar");
         }
     }//GEN-LAST:event_btnComprobarActionPerformed
+
+    private void txtNumeroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroKeyPressed
+        
+        //Cuando presione enter sobre textField
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+        { 
+            
+        } 
+    }//GEN-LAST:event_txtNumeroKeyPressed
 
     /**
      * @param args the command line arguments
