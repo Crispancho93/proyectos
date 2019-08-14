@@ -3,8 +3,11 @@ package comercial.dao;
 import entity.Empleado;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,6 +17,7 @@ public class EmpleadoDao {
     
     private String sql;
     private String mensaje = "";
+    private Connection conn = conexion.ConexionMariadb.getConnection();
     
     
     public String agregarEmpleado(Connection conn, Empleado empleado){
@@ -99,5 +103,35 @@ public class EmpleadoDao {
             
     public void listarEmpleado(Connection conn, JTable tabla){
         
+        String [] columnas = {"ID", "Nombres", "Apellidos", "Cedula", "Esdato civil", "Genero", "Edad"};
+        DefaultTableModel modelo = new DefaultTableModel(null, columnas);
+        String sql = "SELECT * FROM EMPLEADO ORDER BY ID_EMPLEADO ASC";
+        String [] filas = new String[7];
+        Statement declaracion = null;
+        ResultSet resultado = null; 
+        
+        try 
+        {
+            declaracion = conn.prepareStatement(sql);
+            resultado = declaracion.executeQuery(sql);
+            
+            while (resultado.next()) {                
+                for (int i = 0; i < 7; i++) {
+                    filas[i] = resultado.getString(i+1);
+                }
+                
+                modelo.addRow(filas);
+            }
+            tabla.setModel(modelo);
+        } catch (Exception e) 
+        {
+        }
+    }
+    
+    public void desconectar(){
+        try {
+            conn.close();
+        } catch (Exception e) {
+        }
     }
 }

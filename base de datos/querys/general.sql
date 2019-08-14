@@ -1,6 +1,8 @@
 /*CREAR*/
 CREATE DATABASE aprendiendo;
 
+
+/*EMPLEADO*/
 USE APRENDIENDO;
 CREATE TABLE EMPLEADO (
     ID_EMPLEADO INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -12,33 +14,40 @@ CREATE TABLE EMPLEADO (
 	EDAD INT NOT NULL
 );
 
+/*insertar*/
+INSERT INTO empleado (nombre, apellido, cedula, estado_civil, genero, edad)
+VALUES ('julio', 'lopez', '34435','1','1',23);
+
+/*seleccionar*/
+SELECT * FROM EMPLEADO ORDER BY ID_EMPLEADO ASC;
+
+/*eliminar tabla*/
+DROP TABLE EMPLEADO;
+
+
+
+/*NUMERO*/
 USE APRENDIENDO;
 CREATE TABLE NUMERO(
 	ID_NUMERO INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     VALOR INT NOT NULL
 );
-SELECT * FROM NUMERO;
 
-
-/*INSERTAR*/
-INSERT INTO empleado (nombre, apellido, cedula, estado_civil, genero, edad)
-VALUES ('julio', 'lopez', '34435','1','1',23);
-
-SELECT * FROM EMPLEADO;
-
+/*insertar*/
 INSERT INTO NUMERO (VALOR)
 VALUES ('el numero 2 es par');
 
-/*ACTUALIZAR*/
+/*seleccionar*/
+SELECT * FROM NUMERO;
 
-/*ELIMINAR*/
-DROP TABLE EMPLEADO;
 
+/*borrar registro*/
 DELETE FROM NUMERO WHERE ID_NUMERO = 1;
 
-/*ALTERAR*/
+/*agregar columna*/
 ALTER TABLE NUMERO
 ADD DESCRIPCION VARCHAR(50);
 
+/*modificar tipo de dato columna*/
 ALTER TABLE NUMERO
 MODIFY COLUMN VALOR INT;

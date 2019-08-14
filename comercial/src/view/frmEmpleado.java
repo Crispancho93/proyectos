@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package view;
+import comercial.bo.EmpleadoBo;
 import entity.Empleado;
 
 /**
@@ -12,12 +13,19 @@ import entity.Empleado;
  */
 public class frmEmpleado extends javax.swing.JFrame {
 
+    Empleado miEmpleado = new Empleado();
+    EmpleadoBo miBo = new EmpleadoBo();
+    
     /**
      * Creates new form frmEmpleado
      */
     public frmEmpleado() {
         initComponents();
-        
+        listarEmpleado();
+    }
+    
+    public void listarEmpleado(){
+       miBo.listarEmpleado(tbEmpleado);
     }
 
     /**
@@ -104,13 +112,13 @@ public class frmEmpleado extends javax.swing.JFrame {
 
         tbEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jScrollPane1.setViewportView(tbEmpleado);
@@ -227,7 +235,7 @@ public class frmEmpleado extends javax.swing.JFrame {
                     .addComponent(btnAgregar)
                     .addComponent(btnModificar)
                     .addComponent(btnLimpiar))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -250,11 +258,8 @@ public class frmEmpleado extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         
-        Empleado miEmpleado = new Empleado();
-        miEmpleado.setNombre(txtNombre.getText());
-        miEmpleado.setApellido(txtApellido.getText());
-        miEmpleado.setCedula(txtCedula.getText());
         
+       
         
     }//GEN-LAST:event_btnAgregarActionPerformed
 

@@ -34,19 +34,5 @@ public class ConexionMariadb {
         return conn;
     }
     
-    public static void main(String[] args) {
-        
-        Connection conn = conexion.ConexionMariadb.getConnection();
-        
-        Empleado miEmpleado = new Empleado();
-        miEmpleado.setNombre("julio");
-        miEmpleado.setApellido("rojas");
-        miEmpleado.setCedula("43545454");
-        miEmpleado.setEstadoCivil("1");
-        miEmpleado.setGenero("1");
-        miEmpleado.setEdad(25);
-        
-        EmpleadoDao miDao = new EmpleadoDao();
-        miDao.agregarEmpleado(conn, miEmpleado);
-    }
+    
 }
