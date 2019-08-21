@@ -1,0 +1,5 @@
+bloquea maximixar
+miLogin.setResizable(false);
+
+centra
+miLogin.setLocationRelativeTo(null);
