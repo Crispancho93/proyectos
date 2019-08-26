@@ -3,3 +3,12 @@ miLogin.setResizable(false);
 
 centra
 miLogin.setLocationRelativeTo(null);
+
+imprimir un arreglo
+System.out.println(Arrays.toString(miDao.validarUsuario(conn, miUsuario)));
+
+hacer foco
+txtUsuario.requestFocus();
+
+cambiar apariencia windows
+// cambiar apariencia a la de windows
