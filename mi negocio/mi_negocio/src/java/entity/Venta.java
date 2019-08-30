@@ -10,7 +10,6 @@ public class Venta {
     private int idPersona;
     private int idUsuario;
     private int idArticulo;
-    private int idIngreso;
     private String tipoComprobante;
     private String numeroComprobante;
     private String fechaExpedicion;
@@ -59,14 +58,6 @@ public class Venta {
 
     public void setIdArticulo(int idArticulo) {
         this.idArticulo = idArticulo;
-    }
-
-    public int getIdIngreso() {
-        return idIngreso;
-    }
-
-    public void setIdIngreso(int idIngreso) {
-        this.idIngreso = idIngreso;
     }
 
     public String getTipoComprobante() {
@@ -207,7 +198,7 @@ public class Venta {
 
     @Override
     public String toString() {
-        return "Venta{" + "idVenta=" + idVenta + ", idPersona=" + idPersona + ", idUsuario=" + idUsuario + ", idArticulo=" + idArticulo + ", idIngreso=" + idIngreso + ", tipoComprobante=" + tipoComprobante + ", numeroComprobante=" + numeroComprobante + ", fechaExpedicion=" + fechaExpedicion + ", fechaVencimiento=" + fechaVencimiento + ", cantidad=" + cantidad + ", valorUnitario=" + valorUnitario + ", subtotal=" + subtotal + ", descuento=" + descuento + ", subtotalDescuento=" + subtotalDescuento + ", iva=" + iva + ", total=" + total + ", rteFuente=" + rteFuente + ", rteIva=" + rteIva + ", rteIca=" + rteIca + ", neto=" + neto + ", estado=" + estado + ", observaciones=" + observaciones + '}';
+        return "Venta{" + "idVenta=" + idVenta + ", idPersona=" + idPersona + ", idUsuario=" + idUsuario + ", idArticulo=" + idArticulo + ", tipoComprobante=" + tipoComprobante + ", numeroComprobante=" + numeroComprobante + ", fechaExpedicion=" + fechaExpedicion + ", fechaVencimiento=" + fechaVencimiento + ", cantidad=" + cantidad + ", valorUnitario=" + valorUnitario + ", subtotal=" + subtotal + ", descuento=" + descuento + ", subtotalDescuento=" + subtotalDescuento + ", iva=" + iva + ", total=" + total + ", rteFuente=" + rteFuente + ", rteIva=" + rteIva + ", rteIca=" + rteIca + ", neto=" + neto + ", estado=" + estado + ", observaciones=" + observaciones + '}';
     }
     
     

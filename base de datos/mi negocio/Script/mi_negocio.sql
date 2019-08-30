@@ -147,7 +147,6 @@ CREATE TABLE IF NOT EXISTS `mi_negocio`.`venta` (
   `idpersona` INT NOT NULL,
   `idusuario` INT NOT NULL,
   `idarticulo` INT NOT NULL,
-  `idingreso` INT NOT NULL,
   `tipo_comprobante` VARCHAR(20) NOT NULL,
   `num_comprobante` VARCHAR(10) NULL,
   `fecha_expedicion` DATETIME NULL,
@@ -180,17 +179,59 @@ CREATE TABLE IF NOT EXISTS `mi_negocio`.`venta` (
     FOREIGN KEY (`idarticulo`)
     REFERENCES `mi_negocio`.`articulo` (`idarticulo`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_venta_ingreso`
-    FOREIGN KEY (`idingreso`)
-    REFERENCES `mi_negocio`.`ingreso` (`idingreso`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION
 ENGINE = InnoDB;
 CREATE INDEX  idx_venta_1 ON venta(idpersona);
 CREATE INDEX  idx_venta_2 ON venta(idusuario);
 CREATE INDEX  idx_venta_3 ON venta(idarticulo);
-CREATE INDEX  idx_venta_4 ON venta(idingreso);
+
+-- -----------------------------------------------------
+-- Table `mi_negocio`.`recibo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mi_negocio`.`recibo` (
+  `idrecibo` INT NOT NULL AUTO_INCREMENT,
+  `idpersona` INT NOT NULL,
+  `idusuario` INT NOT NULL,
+  `idarticulo` INT NOT NULL,
+  `idventa` INT NOT NULL,
+  `tipo_comprobante` VARCHAR(20) NOT NULL,
+  `num_comprobante` VARCHAR(10) NULL,
+  `fecha_expedicion` DATETIME NULL,
+  `descuento` DECIMAL(11,2) NULL,
+  `subtotal_descuento` DECIMAL(11,2) NULL,
+  `total` DECIMAL(11,2) NULL,
+  `rte_fuente` DECIMAL(11,2) NULL,
+  `rte_iva` DECIMAL(11,2) NULL,
+  `rte_ica` DECIMAL(11,2) NULL,
+  `neto` DECIMAL(11,2) NULL,
+  `estado` VARCHAR(45) NULL,
+  `observaciones` VARCHAR(100) NULL,
+  PRIMARY KEY (`idrecibo`),
+  CONSTRAINT `fk_recibo_persona`
+    FOREIGN KEY (`idpersona`)
+    REFERENCES `mi_negocio`.`persona` (`idpersona`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_recibo_usuario`
+    FOREIGN KEY (`idusuario`)
+    REFERENCES `mi_negocio`.`usuario` (`idusuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_recibo_articulo`
+    FOREIGN KEY (`idarticulo`)
+    REFERENCES `mi_negocio`.`articulo` (`idarticulo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_recibo_venta`
+    FOREIGN KEY (`idventa`)
+    REFERENCES `mi_negocio`.`venta` (`idventa`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+CREATE INDEX  idx_recibo_1 ON venta(idpersona);
+CREATE INDEX  idx_recibo_2 ON venta(idusuario);
+CREATE INDEX  idx_recibo_3 ON venta(idarticulo);
+CREATE INDEX  idx_recibo_4 ON venta(idventa);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
