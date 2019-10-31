@@ -14,7 +14,7 @@ if(!empty(htmlspecialchars($_POST["btnIniciarSesion"]))){
     $usuario->setLoguin(htmlspecialchars($_POST["loguin"]));
     $usuario->setClave(htmlspecialchars($_POST["clave"]));
     
-    // se crea sesión si el usuario es diferente de null
+    // se crea sesiï¿½n si el usuario es diferente de null
     if($userDao->validarUsuario($usuario) != null){
         
         $userValid = $userDao->validarUsuario($usuario);
@@ -31,3 +31,10 @@ if(!empty(htmlspecialchars($_POST["btnIniciarSesion"]))){
 } else {
     header("Location: ../view/index.php");  
 }
+
+
+
+
+
+
+
